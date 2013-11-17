@@ -1,4 +1,5 @@
 1) What can we do on a computer than we can’t do on a printed board?
+	We can provide 
 
 
 2) What is a computerized opponent? Remember, not everyone is an expert.  
@@ -35,25 +36,35 @@ Can we achieve consistent (error) messaging to the user now that we are using tw
 What is the impact of the Ruby/GTK2 interface on exception handling?
 
 6) Do we require a command-line interface for debugging purposes????? The answer is yes by the way – please explain why.
-
+	Yes.  What we deliver to the screen via the GUI and what we actually have underlying in the code can be different.
+	To make sure, we will debug with a command line interface.
 
 7) What components do Connect 4 and “OTTO and TOOT” have in common?
+	Almost all components are the same.
+	The only difference is the win condition, instead of OOOO, it is OTTO.
 
 How do we take advantage of this commonality in our OO design?
+	We will design small reusable, switchable components to only switch out the win condition.
+	This way, we can reuse all the code to implement a slight change in functionality.
 
 How do we construct our design to “allow it to be efficiently and effectively extended”?
 
 8) What is Model-View-Controller (MVC this was discussed in CMPE 300 and CMPUT301)? Illustrate how you have utilized this idea in your solution. That is, use it!
+	Model View Controller is a design pattern that separates the entire application into three distinct parts:
+	Model - Contains the application data and all of its business logic
+	View - User facing representation of the data
+	Controller - mediates input from the View to the Model, and vice versa.
 
 9) Different articles describe MVC differently; are you using pattern Composite?, Observer?, Strategy? 
 
 How are your views and controllers organized? What is your working definition of MVC?
 We use one of each:
-	- Our Model will be the Game Board object, containing all the data of the game state
+	- Our Model will be the Game Board object, containing all the data of the game state, as well as prevent illegal moves.
 	- Our View will be the UI object that interfaces with Gtk2
 	- Our Controller will be the Game Instance object, linking actions from the view to interact with the Game Board object.
 
 10) Namespaces – are they required for this problem? Fully explain your answer!
+	Namespaces can be required for this problem to properly separate different code pieces that may have the same name.
 
 
 11) Iterators – are they required for this problem? Fully explain your answer!
