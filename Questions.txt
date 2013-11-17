@@ -48,7 +48,10 @@ How do we construct our design to “allow it to be efficiently and effectively 
 9) Different articles describe MVC differently; are you using pattern Composite?, Observer?, Strategy? 
 
 How are your views and controllers organized? What is your working definition of MVC?
-
+We use one of each:
+	- Our Model will be the Game Board object, containing all the data of the game state
+	- Our View will be the UI object that interfaces with Gtk2
+	- Our Controller will be the Game Instance object, linking actions from the view to interact with the Game Board object.
 
 10) Namespaces – are they required for this problem? Fully explain your answer!
 
