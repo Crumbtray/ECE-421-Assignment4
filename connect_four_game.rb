@@ -1,6 +1,6 @@
 require 'test/unit/assertions.rb'
 require './connect_four_game_board'
-require './connect_four_ui'
+#require './connect_four_ui'
 include Test::Unit::Assertions
 
 class ConnectFourGame
@@ -9,7 +9,7 @@ class ConnectFourGame
 	
 	def initialize(gameType, row = 6, col = 7)
 		# Game Type is either Normal, or TOOT (OTTO)
-		@ui = ConnectFourUI.new(self)
+		#@ui = ConnectFourUI.new(self)
 		@rows = row
 		@columns = col
 		@gameType = gameType
@@ -30,14 +30,20 @@ class ConnectFourGame
 
 
 	    #Post Conditions
-	    assert(@gameBoard.grid[col].size > beforeCount)
+	    assert(@gameBoard.grid[col].size >= beforeCount)
 	    #End Post Conditions
 	end
 	
 	def checkWinCondition
-		
+		# Pre Conditions
+		begin
+			raise RuntimeError, "ConnectFourGameBoard:: RuntimeError -> Game is over.  Please start a new one." unless @gameBoard.endGame == false
+		end
+		# End Pre Conditions
 
+		# Post Conditions
 
+		# End Post Conditions
 	end
 end
 
