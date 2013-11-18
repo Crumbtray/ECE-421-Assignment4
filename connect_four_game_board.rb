@@ -1,3 +1,6 @@
+require 'test/unit/assertions.rb'
+include Test::Unit::Assertions
+
 class ConnectFourGameBoard
 
 	attr_reader :grid, :rowSize, :colSize
@@ -33,6 +36,10 @@ class ConnectFourGameBoard
 			puts "Invalid move: Column is full."
 			return @grid
 		end
+
+		# Post Conditions
+
+		# End Post Conditions
 	end
 
 end
