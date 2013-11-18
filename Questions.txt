@@ -55,6 +55,7 @@ Can we achieve consistent (error) messaging to the user now that we are using tw
 	but intermittent errors that break the connection between the components will not be able to be given to the user.
 
 What is the impact of the Ruby/GTK2 interface on exception handling?
+	The impact is that there often exists a separation between the GUI (created through GTK2) and the underlying logic (using Ruby) making exception handling more difficult.  It is desirable for exceptions to be handled in a centralized location.  With the Ruby/GTK2 interface, it is important that exceptions are not handled at a trivially high level (ie: surrounding the main game loop) but instead handled more locally (ie: at each code block where a view is updated or input is received from the user through the view).    
 
 6) Do we require a command-line interface for debugging purposes????? The answer is yes by the way – please explain why.
 	Yes.  What we deliver to the screen via the GUI and what we actually have underlying in the code can be different.
