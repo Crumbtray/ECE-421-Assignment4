@@ -6,17 +6,17 @@
 
 
 2) What is a computerized opponent? Remember, not everyone is an expert.  
--A computerized opponent is some code which appears to play the game like a human player
+	A computerized opponent is some code which appears to play the game like a human player
 
 What are its objectives?  
--Its objective is to win the game
+	Its objective is to win the game
 
 What characteristics should it possess?
--It should be able to play quickly and react to the human playing
--Ideally it should demonstrate the ability to plan
+	-It should be able to play quickly and react to the human playing
+	-Ideally it should demonstrate the ability to plan
 
 Do we need an opponent or opponents?
--We would like to have oppononents to reflect multiple skill levels
+	We would like to have oppononents to reflect multiple skill levels
 
 3) What design choices exist for the Interface components? 
 
@@ -32,9 +32,16 @@ Scroll Bars? ....
 
 
 4) What are the advantages and disadvantages of using a visual GUI construction tool?
-
+	Advantages:
+	-Immediate feedback when adjusting the size of components
+	-Don't need to use code to specify size of every single component
+	Disadvantages:
+	-New tool to learn (potential learning curve)
+	-May limit ability to have dynamic GUI
+	-May miss out on some programmatic 'tricks'
 How would you integrate the usage of such a tool into a development process?
-
+	Have a 'rough' GUI built quickly to interface with the code.
+	Time permitting, polish it up for the final product.
 
 5) What does exception handling mean in a GUI system?
 
