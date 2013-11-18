@@ -38,7 +38,7 @@ class ConnectFourGameBoard
 		end
 
 		# Post Conditions
-
+		
 		# End Post Conditions
 	end
 

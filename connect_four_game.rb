@@ -26,13 +26,17 @@ class ConnectFourGame
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> Game is over.  Please start a new one." unless @gameBoard.endGame == false
 		end
 	    #End PreConditions
+	    beforeCount = @gameBoard.grid[col].size
+
 
 	    #Post Conditions
-	    assert(@gameBoard)
+	    assert(@gameBoard.grid[col].size > beforeCount)
 	    #End Post Conditions
 	end
 	
 	def checkWinCondition
+		
+
 
 	end
 end
