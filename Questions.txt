@@ -21,14 +21,17 @@ Do we need an opponent or opponents?
 3) What design choices exist for the Interface components? 
 
 Colour?
-
+	Providing good contrast
+	Accommodating colour-blindness
 Font? 
-
+	Simple readable typeface (such as Arial) at reasonable size
 Dimensions of Windows? 
 
-Rescale-ability? 
+Rescale-ability?
+	Nice feature to have, not strictly necessary
 
 Scroll Bars? ....
+	Completely unnecessary if not allowing rescale
 
 
 4) What are the advantages and disadvantages of using a visual GUI construction tool?
