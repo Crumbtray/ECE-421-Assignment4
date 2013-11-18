@@ -21,7 +21,6 @@ class ConnectFourGame
 	def checkWinCondition
 
 	end
-
 end
 
 game = ConnectFourGame.new("Normal")

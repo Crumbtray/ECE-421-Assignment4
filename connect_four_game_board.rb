@@ -15,6 +15,7 @@ class ConnectFourGameBoard
 	end
 
 	def add(player, column)
+		# Pre Conditions
 		begin
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> invalid column." unless (column > 0 and column <= colSize)
 		end
@@ -22,6 +23,7 @@ class ConnectFourGameBoard
 		begin
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> Game is over.  Please start a new one." unless @endGame == false
 		end
+		# Pre Conditions End
 
 		zeroIndexColumn = column - 1
 		if(@grid[zeroIndexColumn].size < colSize)
