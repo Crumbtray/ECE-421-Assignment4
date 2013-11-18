@@ -42,7 +42,10 @@ class ConnectFourGame
 		# End Pre Conditions
 
 		# Post Conditions
-
+		# Nothing really to put here.  We delegate our win condition checking to the external modules
+		# It returns a true or false and:
+		# 	- If true, end game.
+		# 	- If false, continue game.
 		# End Post Conditions
 	end
 end
