@@ -47,8 +47,11 @@ How would you integrate the usage of such a tool into a development process?
 	Time permitting, polish it up for the final product.
 
 5) What does exception handling mean in a GUI system?
+	Exception Handling with a GUI system involves packaging the errors as nice "unexpected problems" output to the users.
 
 Can we achieve consistent (error) messaging to the user now that we are using two components (Ruby and GTK2)?
+	We can achieve somewhat consistent error messaging to the user.  Most errors can be sent to the user,
+	but intermittent errors that break the connection between the components will not be able to be given to the user.
 
 What is the impact of the Ruby/GTK2 interface on exception handling?
 
@@ -65,6 +68,7 @@ How do we take advantage of this commonality in our OO design?
 	This way, we can reuse all the code to implement a slight change in functionality.
 
 How do we construct our design to “allow it to be efficiently and effectively extended”?
+	Our design will use interchangeable objects that adhere to a contract.  To extend the game, we simply create different objects and swap them within the existing game framework. 
 
 8) What is Model-View-Controller (MVC this was discussed in CMPE 300 and CMPUT301)? Illustrate how you have utilized this idea in your solution. That is, use it!
 	Model View Controller is a design pattern that separates the entire application into three distinct parts:
@@ -73,7 +77,7 @@ How do we construct our design to “allow it to be efficiently and effectively 
 	Controller - mediates input from the View to the Model, and vice versa.
 
 9) Different articles describe MVC differently; are you using pattern Composite?, Observer?, Strategy? 
-
+	We are using the Strategy MVC pattern.
 How are your views and controllers organized? What is your working definition of MVC?
 We use one of each:
 	- Our Model will be the Game Board object, containing all the data of the game state, as well as prevent illegal moves.
@@ -89,3 +93,8 @@ We use one of each:
 
 
 12) What components of the Ruby exception hierarchy are applicable to this problem, etc? Consider the content of the library at: http://c2.com/cgi/wiki?ExceptionPatterns Which are applicable to this problem? Illustrate your answer.
+	We will use ArgumentErrors, RuntimeErrors and StandardErrors from the Ruby exception hierarchy.
+	The Exception Patterns that apply are:
+		- Exception Logging (Easier to display to the user)
+		- Exception Reporter (Report to the user)
+		- Catch What you Can Handle (Some errors, like certain ArgumentErrors, are never meant to be passed up)
