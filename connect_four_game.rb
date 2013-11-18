@@ -1,6 +1,6 @@
 require 'test/unit/assertions.rb'
 require './connect_four_game_board'
-#require './connect_four_ui'
+require './connect_four_ui'
 include Test::Unit::Assertions
 
 class ConnectFourGame
@@ -9,7 +9,7 @@ class ConnectFourGame
 	
 	def initialize(gameType, row = 6, col = 7)
 		# Game Type is either Normal, or TOOT (OTTO)
-		#@ui = ConnectFourUI.new(self)
+		@ui = ConnectFourUI.new(self)
 		@rows = row
 		@columns = col
 		@gameType = gameType
