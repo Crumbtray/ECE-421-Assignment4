@@ -16,7 +16,7 @@ What characteristics should it possess?
 	-Ideally it should demonstrate the ability to plan
 
 Do we need an opponent or opponents?
-	We would like to have oppononents to reflect multiple skill levels
+	We would like to have opponents to reflect multiple skill levels
 
 3) What design choices exist for the Interface components? 
 
@@ -26,6 +26,7 @@ Colour?
 Font? 
 	Simple readable typeface (such as Arial) at reasonable size
 Dimensions of Windows? 
+	Pick a size that is large enough to see everything but not so large that it cannot fit on most computers. Ideally user has options for choosing window size.
 
 Rescale-ability?
 	Nice feature to have, not strictly necessary
