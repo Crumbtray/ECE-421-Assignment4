@@ -1,4 +1,4 @@
-1) What can we do on a computer than we can’t do on a printed board?
+﻿1) What can we do on a computer than we can’t do on a printed board?
 	We can:
 		- Provide a vast network of players to choose from (via the internet)
 		- Enable tweaking of difficulty
@@ -6,13 +6,17 @@
 
 
 2) What is a computerized opponent? Remember, not everyone is an expert.  
+-A computerized opponent is some code which appears to play the game like a human player
 
 What are its objectives?  
+-Its objective is to win the game
 
 What characteristics should it possess?
+-It should be able to play quickly and react to the human playing
+-Ideally it should demonstrate the ability to plan
 
 Do we need an opponent or opponents?
-
+-We would like to have oppononents to reflect multiple skill levels
 
 3) What design choices exist for the Interface components? 
 
