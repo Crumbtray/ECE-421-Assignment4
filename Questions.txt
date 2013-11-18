@@ -1,5 +1,8 @@
 1) What can we do on a computer than we can’t do on a printed board?
-	We can provide 
+	We can:
+		- Provide a vast network of players to choose from (via the internet)
+		- Enable tweaking of difficulty
+		- Provide multiple games played at once
 
 
 2) What is a computerized opponent? Remember, not everyone is an expert.  
