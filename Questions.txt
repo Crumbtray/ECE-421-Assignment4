@@ -85,6 +85,7 @@ We use one of each:
 
 
 11) Iterators – are they required for this problem? Fully explain your answer!
+	Iterators are definitely required. The computerized opponent will need an iterator to evaluate its potential moves. An iterator will likely be used for checking whether the game has been won. When a piece is placed, we will need to check if the winning sequence has been formed with its neighbours.
 
 
 12) What components of the Ruby exception hierarchy are applicable to this problem, etc? Consider the content of the library at: http://c2.com/cgi/wiki?ExceptionPatterns Which are applicable to this problem? Illustrate your answer.
