@@ -29,9 +29,12 @@ class ConnectFourUI
   end
   
   def button_clicked(tileNumber)
-      puts "Button Pressed: #{tileNumber}"
-      result = @gameInstance.move("Player 1", tileNumber)
-      puts "FINAL RESULT = #{result}"
-      @builder.get_object("image" + result.to_s).set_file("ghost.png")
+      player = @gameInstance.gameBoard.currentPlayer
+      result = @gameInstance.move(player, tileNumber)
+      if (player == @gameInstance.gameBoard.player1)
+        @builder.get_object("image" + result.to_s).set_file("ghost.png")
+      else
+        @builder.get_object("image" + result.to_s).set_file("bunny.png")
+      end
   end
 end

@@ -17,7 +17,6 @@ class ConnectFourGame
 	end
 
 	def move(player, column)
-		puts "MOVE CALLED"
 	    #Pre Conditions
 	    begin
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> invalid column." unless (column > 0 and column <= @columns)
@@ -29,25 +28,15 @@ class ConnectFourGame
 	    
 	    #End PreConditions
 		
-		puts "BEGIN BLOCK"
-	    begin
-	    	puts "WHAT'S THIS BLOCK"
-			beforeCount = @gameBoard.grid[column].size
+		beforeCount = @gameBoard.grid[column - 1].size
 
-	    	puts "ADDING"
-	    	returnVal = @gameBoard.add(player, column)
-	    	puts "RETURN VALUE: #{returnVal}"
-	    	#Post Conditions
-	    	assert(@gameBoard.grid[column].size >= beforeCount)
-	    	#End Post Conditions
+		returnVal = @gameBoard.add(player, column)
+	    
+	    #Post Conditions
+	    assert(@gameBoard.grid[column - 1].size >= beforeCount)
+	    #End Post Conditions
 	    	
-	    	return returnVal
-	    end
-
-
-
-
-	    return returnval
+	    return returnVal
 	end
 	
 	def checkWinCondition

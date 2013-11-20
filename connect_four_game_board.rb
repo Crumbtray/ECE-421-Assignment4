@@ -3,7 +3,7 @@ include Test::Unit::Assertions
 
 class ConnectFourGameBoard
 
-	attr_reader :grid, :rowSize, :colSize
+	attr_reader :grid, :rowSize, :colSize, :currentPlayer, :player1, :player2
 	attr_accessor :endGame
 
 	def initialize(rows, columns, player1, player2)
@@ -13,7 +13,7 @@ class ConnectFourGameBoard
 		@endGame = false
 		@player1 = player1
 		@player2 = player2
-		@currentPlayer = player1
+		@currentPlayer = @player1
 
 		for i in 0..columns - 1
 			@grid << Array.new
@@ -21,7 +21,6 @@ class ConnectFourGameBoard
 	end
 
 	def add(player, column)
-		puts "ADDING RECEIVED"
 		# Pre Conditions
 		begin
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> invalid column." unless (column > 0 and column <= colSize)
@@ -40,9 +39,12 @@ class ConnectFourGameBoard
 
 		if(@grid[zeroIndexColumn].size < colSize)
 			@grid[zeroIndexColumn].push(player)
-			puts "#{@grid}"
 			returnVal = column + (@grid[zeroIndexColumn].size - 1) * @colSize
-			puts "WHAT IS RETURN VAL #{returnVal}"
+			if(@currentPlayer == @player1)
+				@currentPlayer = @player2
+			else
+				@currentPlayer = @player1
+			end
 			return returnVal
 		else
 			puts "Invalid move: Column is full."
