@@ -22,7 +22,6 @@ class ConnectFourUI
     }
 
     image1 = @builder.get_object("image1")
-    puts "#{image1.class}"
 
     window1.show()
 
@@ -31,5 +30,8 @@ class ConnectFourUI
   
   def button_clicked(tileNumber)
       puts "Button Pressed: #{tileNumber}"
+      result = @gameInstance.move("Player 1", tileNumber)
+      puts "FINAL RESULT = #{result}"
+      @builder.get_object("image" + result.to_s).set_file("ghost.png")
   end
 end

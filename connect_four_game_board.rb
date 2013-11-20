@@ -21,6 +21,7 @@ class ConnectFourGameBoard
 	end
 
 	def add(player, column)
+		puts "ADDING RECEIVED"
 		# Pre Conditions
 		begin
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> invalid column." unless (column > 0 and column <= colSize)
@@ -39,7 +40,10 @@ class ConnectFourGameBoard
 
 		if(@grid[zeroIndexColumn].size < colSize)
 			@grid[zeroIndexColumn].push(player)
-			return @grid
+			puts "#{@grid}"
+			returnVal = column + (@grid[zeroIndexColumn].size - 1) * @colSize
+			puts "WHAT IS RETURN VAL #{returnVal}"
+			return returnVal
 		else
 			puts "Invalid move: Column is full."
 			return nil

@@ -9,14 +9,15 @@ class ConnectFourGame
 	
 	def initialize(gameType, row = 6, col = 7)
 		# Game Type is either Normal, or TOOT (OTTO)
-		@ui = ConnectFourUI.new(self)
 		@rows = row
 		@columns = col
 		@gameType = gameType
 		@gameBoard = ConnectFourGameBoard.new(row, col, "Player 1", "Player 2")
+		@ui = ConnectFourUI.new(self)
 	end
 
 	def move(player, column)
+		puts "MOVE CALLED"
 	    #Pre Conditions
 	    begin
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> invalid column." unless (column > 0 and column <= @columns)
@@ -25,17 +26,26 @@ class ConnectFourGame
 		begin
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> Game is over.  Please start a new one." unless @gameBoard.endGame == false
 		end
+	    
 	    #End PreConditions
-	    beforeCount = @gameBoard.grid[col].size
-
+		
+		puts "BEGIN BLOCK"
 	    begin
+	    	puts "WHAT'S THIS BLOCK"
+			beforeCount = @gameBoard.grid[column].size
+
+	    	puts "ADDING"
 	    	returnVal = @gameBoard.add(player, column)
-	    rescue
-	    	returnVal = nil
+	    	puts "RETURN VALUE: #{returnVal}"
+	    	#Post Conditions
+	    	assert(@gameBoard.grid[column].size >= beforeCount)
+	    	#End Post Conditions
+	    	
+	    	return returnVal
 	    end
-	    #Post Conditions
-	    assert(@gameBoard.grid[col].size >= beforeCount)
-	    #End Post Conditions
+
+
+
 
 	    return returnval
 	end
