@@ -30,14 +30,6 @@ class ConnectFourUI
   end
   
   def button_clicked(tileNumber)
-      result = @gameInstance.move("Player 1", tileNumber)
-      if(!result.nil?)
-      {
-        @builder.get_object("image" + result.to_s).set_file("000.png")
-      }
-      else
-      {
-        puts "INVALID MOVE."
-      }
+      puts "Button Pressed: #{tileNumber}"
   end
 end
