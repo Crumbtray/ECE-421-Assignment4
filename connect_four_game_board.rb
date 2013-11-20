@@ -34,16 +34,15 @@ class ConnectFourGameBoard
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> Not this player's turn." unless @currentPlayer == player
 		end
 		# Pre Conditions End
-
+		zeroIndexColumn = column - 1
 		beforeCol = @grid[zeroIndexColumn].size
 
-		zeroIndexColumn = column - 1
 		if(@grid[zeroIndexColumn].size < colSize)
 			@grid[zeroIndexColumn].push(player)
 			return @grid
 		else
 			puts "Invalid move: Column is full."
-			return @grid
+			return nil
 		end
 
 		# Post Conditions

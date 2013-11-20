@@ -13,10 +13,10 @@ class ConnectFourGame
 		@rows = row
 		@columns = col
 		@gameType = gameType
-		@gameBoard = ConnectFourGameBoard.new(row, col)
+		@gameBoard = ConnectFourGameBoard.new(row, col, "Player 1", "Player 2")
 	end
 
-	def move(column)
+	def move(player, column)
 	    #Pre Conditions
 	    begin
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> invalid column." unless (column > 0 and column <= @columns)
@@ -28,10 +28,16 @@ class ConnectFourGame
 	    #End PreConditions
 	    beforeCount = @gameBoard.grid[col].size
 
-
+	    begin
+	    	returnVal = @gameBoard.add(player, column)
+	    rescue
+	    	returnVal = nil
+	    end
 	    #Post Conditions
 	    assert(@gameBoard.grid[col].size >= beforeCount)
 	    #End Post Conditions
+
+	    return returnval
 	end
 	
 	def checkWinCondition
