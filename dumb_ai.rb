@@ -4,11 +4,22 @@ class DumbAI
 		# Make the AI learn, etc.
 	end
 
+	#DumbAI will naively choose its next move randomly from the unfilled board columns
 	def makeMove(gameBoard)
 		# Pre Conditions
 		begin
 			raise ArgumentError, "DumbAI:: ArgumentError -> Game is over.  Please start a new one." unless gameBoard.endGame == false
 		end
 		# End Pre Conditions
+		
+		possibleMoves = Array.new
+		#Add non-full columns to choice list
+		for index in 0..gameBoard.colSize - 1
+			if gameBoard.grid[index].to_a.count < gameBoard.rowSize
+				possibleMoves.push(index + 1)
+			end
+		end
+		#Randomly chose from filtered columns
+		#gameBoard.add(self, possibleMoves.sample)
 	end
 end
