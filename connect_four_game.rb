@@ -1,6 +1,7 @@
 require 'test/unit/assertions.rb'
 require './connect_four_game_board'
 require './connect_four_ui'
+require './win_checker_normal'
 include Test::Unit::Assertions
 
 class ConnectFourGame
@@ -45,6 +46,7 @@ class ConnectFourGame
 			raise RuntimeError, "ConnectFourGameBoard:: RuntimeError -> Game is over.  Please start a new one." unless @gameBoard.endGame == false
 		end
 		# End Pre Conditions
+
 
 		# Post Conditions
 		# Nothing really to put here.  We delegate our win condition checking to the external modules
