@@ -27,7 +27,7 @@ class ConnectFourUI
 
     Gtk.main()
   end
-  
+
   def button_clicked(tileNumber)
       player = @gameInstance.gameBoard.currentPlayer
       result = @gameInstance.move(player, tileNumber)
