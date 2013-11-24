@@ -20,6 +20,6 @@ class DumbAI
 			end
 		end
 		#Randomly chose from filtered columns
-		#gameBoard.add(self, possibleMoves.sample)
+		gameBoard.add(self, possibleMoves.sample)
 	end
 end
