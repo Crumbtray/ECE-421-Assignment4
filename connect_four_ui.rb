@@ -52,8 +52,7 @@ class ConnectFourUI
     
   end
 
-  def button_clicked(tileNumber)
-      
+  def button_clicked(tileNumber)  
       begin
         @gameInstance.move(self, tileNumber)
         @gameInstance.endTurn
@@ -78,18 +77,17 @@ class ConnectFourUI
   def endGame(winner)
     puts winner
     if(winner == self)
-      text = "YOU ARE A WINNER"
+      text = "You win!"
     elsif (winner == "draw")
-      text = "TIE GAME"
+      text = "Tie game."
     else
-      text = "YOU ARE A LOSER"
+      text = "You lose!"
     end
     dialog = Gtk::Dialog.new("Winner", @window1)
     dialog.signal_connect('response') {dialog.destroy}
       
     dialog.vbox.add(Gtk::Label.new(text))
     dialog.show_all
-
   end
 
 end
