@@ -12,29 +12,32 @@ module WinCheckerNormal
 				current = gameBoard.grid[x][y]
 				#check if there are any lines
 				if(current != nil)
-					if(current == gameBoard.grid[x+1][y] &&
-						current == gameBoard.grid[x+2][y] &&
-						current == gameBoard.grid[x+3][y])
-						gameBoard.endGame = true;
-						return current;
-					end
 					if(current == gameBoard.grid[x][y+1] &&
 						current == gameBoard.grid[x][y+2] &&
 						current == gameBoard.grid[x][y+3])
 						gameBoard.endGame = true;
 						return current;
 					end
-					if(current == gameBoard.grid[x+1][y+1] &&
-						current == gameBoard.grid[x+2][y+2] &&
-						current == gameBoard.grid[x+3][y+3])
-						gameBoard.endGame = true;
-						return current;
-					end
-					if(current == gameBoard.grid[x+1][y-1] &&
-						current == gameBoard.grid[x+2][y-2] &&
-						current == gameBoard.grid[x+3][y-3])
-						gameBoard.endGame = true;
-						return current;
+					if (x < gameBoard.rowSize - 3)
+						if(
+							current == gameBoard.grid[x+1][y] &&
+							current == gameBoard.grid[x+2][y] &&
+							current == gameBoard.grid[x+3][y])
+							gameBoard.endGame = true;
+							return current;
+						end
+						if(current == gameBoard.grid[x+1][y+1] &&
+							current == gameBoard.grid[x+2][y+2] &&
+							current == gameBoard.grid[x+3][y+3])
+							gameBoard.endGame = true;
+							return current;
+						end
+						if(current == gameBoard.grid[x+1][y-1] &&
+							current == gameBoard.grid[x+2][y-2] &&
+							current == gameBoard.grid[x+3][y-3])
+							gameBoard.endGame = true;
+							return current;
+						end
 					end
 				else
 					anyOpenSpace = true
