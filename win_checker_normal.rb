@@ -32,11 +32,15 @@ module WinCheckerNormal
 							gameBoard.endGame = true;
 							return current;
 						end
-						if(current == gameBoard.grid[x+1][y-1] &&
-							current == gameBoard.grid[x+2][y-2] &&
-							current == gameBoard.grid[x+3][y-3])
-							gameBoard.endGame = true;
-							return current;
+						
+						# Check lower diagonal
+						if(y > gameBoard.rowSize - 3)
+							if(current == gameBoard.grid[x+1][y-1] &&
+								current == gameBoard.grid[x+2][y-2] &&
+								current == gameBoard.grid[x+3][y-3])
+								gameBoard.endGame = true;
+								return current;
+							end
 						end
 					end
 				else

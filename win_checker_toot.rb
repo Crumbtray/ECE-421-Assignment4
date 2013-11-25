@@ -21,6 +21,7 @@ module WinCheckerToot
 							current != gameBoard.grid[x][y+2] &&
 							current == gameBoard.grid[x][y+3])
 							gameBoard.endGame = true;
+							puts "Winning Line: (#{x}, #{y}), (#{x}, #{y+1}), (#{x}, #{y+2}), (#{x}, #{y+3})"
 							return current;
 					end
 
@@ -32,6 +33,7 @@ module WinCheckerToot
 							current != gameBoard.grid[x+2][y] &&
 							current == gameBoard.grid[x+3][y])
 							gameBoard.endGame = true;
+							puts "Winning Line: (#{x}, #{y}), (#{x}, #{y+1}), (#{x}, #{y+2}), (#{x}, #{y+3})"
 							return current;
 						end
 
@@ -42,17 +44,25 @@ module WinCheckerToot
 							current != gameBoard.grid[x+2][y+2] &&
 							current == gameBoard.grid[x+3][y+3])
 							gameBoard.endGame = true;
+							puts "Winning Line: (#{x}, #{y}), (#{x+1}, #{y+1}), (#{x+2}, #{y+2}), (#{x+3}, #{y+3})"
 							return current;
 						end
 
 						# Check lower diagonal
-						if(gameBoard.grid[x+1][y-1] != nil &&
-							current != gameBoard.grid[x+1][y-1] &&
-							gameBoard.grid[x+2][y-2] != nil &&
-							current != gameBoard.grid[x+2][y-2] &&
-							current == gameBoard.grid[x+3][y-3])
-							gameBoard.endGame = true;
-							return current;
+						if(y > gameBoard.rowSize - 3)
+							puts "y: #{y}"
+							puts "is less than #{gameBoard.rowSize - 3}"
+							if(gameBoard.grid[x+1][y-1] != nil &&
+								current != gameBoard.grid[x+1][y-1] &&
+								gameBoard.grid[x+2][y-2] != nil &&
+								current != gameBoard.grid[x+2][y-2] &&
+								current == gameBoard.grid[x+3][y-3])
+								puts "Current: #{current}"
+								puts "grid (x+3, y-3): #{gameBoard.grid[x+3][y-3]}"
+								gameBoard.endGame = true;
+								puts "Winning Line: (#{x}, #{y}), (#{x+1}, #{y-1}), (#{x+2}, #{y-2}), (#{x+3}, #{y-3})"
+								return current;
+							end
 						end
 					end
 				else
