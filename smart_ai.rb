@@ -5,8 +5,9 @@ class SmartAI
 	#SmartAI chooses either a winning move, blocking move, or a move that is the minimal steps away from winning
 	def makeMove(gameInstance)
 	possibleMoves = Array.new
-		gameBoard = gameInstance.gameBoard.clone
+		gameBoard = gameInstance.gameBoard
 		winChecker = gameInstance.winChecker
+		boardCopy = ConnectFourGameBoard.new(gameBoard.rowSize, gameBoard.colSize, gameBoard.player1, gameBoard.player2)
 		
 		# Pre Conditions
 		begin
@@ -24,7 +25,7 @@ class SmartAI
 		#Analyse each column (move)
 		for move in 0..gameBoard.colSize - 1
 			#Check if a move here will cause player to win
-			boardCopy = gameBoard.clone
+			boardCopy.grid = gameBoard.grid.clone
 			boardCopy.currentPlayer = self
 			boardCopy.add(self, move + 1)
 			if(winChecker.checkWinCondition(boardCopy))
@@ -33,7 +34,7 @@ class SmartAI
 			end
 			
 			#Check if move here will block opponent win
-			boardCopy = gameBoard.clone
+			boardCopy.grid = gameBoard.grid.clone
 			boardCopy.currentPlayer = opponent
 			boardCopy.add(opponent, move + 1)
 			if(winChecker.checkWinCondition(boardCopy))
@@ -62,9 +63,12 @@ class SmartAI
 		end
 		
 		possibleMoves = Array.new
+		boardCopy = ConnectFourGameBoard.new(gameBoard.rowSize, gameBoard.colSize, gameBoard.player1, gameBoard.player2)
+		
 		for move in 0..gameBoard.colSize - 1
+			#Check if there is room to make a move in this column
 			if(gameBoard.grid[move].size < gameBoard.colSize)
-				boardCopy = gameBoard.clone
+				boardCopy.grid = gameBoard.grid.clone
 				boardCopy.currentPlayer = self
 				boardCopy.add(self, move + 1)
 				possibleMoves[move] = 1 + getMoveDepth(boardCopy, winChecker)
