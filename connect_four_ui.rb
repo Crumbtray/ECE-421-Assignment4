@@ -62,7 +62,6 @@ class ConnectFourUI
         dialog.signal_connect('response') {dialog.destroy}
       
         dialog.vbox.add(Gtk::Label.new(e.message))
-        dialog.vbox.add(Gtk::Label.new(e.backtrace.inspect))
         dialog.show_all
       end
   end
