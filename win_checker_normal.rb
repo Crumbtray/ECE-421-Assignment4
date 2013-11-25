@@ -5,7 +5,7 @@ module WinCheckerNormal
 			raise ArgumentError, "WinCheckerToot:: ArgumentError -> Game is over.  Please start a new one." unless gameBoard.endGame == false
 		end
 		# End Pre Conditions
-		
+
 		anyOpenSpace = false
 		for x in 0..gameBoard.colSize - 1
 			for y in 0..gameBoard.rowSize - 1
@@ -18,7 +18,7 @@ module WinCheckerNormal
 						gameBoard.endGame = true;
 						return current;
 					end
-					if (x < gameBoard.rowSize - 3)
+					if (x < gameBoard.colSize - 3)
 						if(
 							current == gameBoard.grid[x+1][y] &&
 							current == gameBoard.grid[x+2][y] &&

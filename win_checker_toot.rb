@@ -11,6 +11,7 @@ module WinCheckerToot
 		for x in 0..gameBoard.colSize - 1
 			for y in 0..gameBoard.rowSize - 1
 				current = gameBoard.grid[x][y]
+				puts "Currently checking cell #{x}, #{y}: #{current}"
 				#check if there are any lines
 				if(current != nil)
 					if(gameBoard.grid[x+1][y] != nil &&

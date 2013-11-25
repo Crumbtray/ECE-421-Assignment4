@@ -21,9 +21,6 @@ class ConnectFourGameBoard
 	end
 
 	def add(player, column)
-		puts "Player #{player} is pushing to column #{column}"
-		puts "Current Player is: #{currentPlayer}"
-
 		# Pre Conditions
 		begin
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> invalid column." unless (column > 0 and column <= colSize)

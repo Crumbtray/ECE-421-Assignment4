@@ -9,8 +9,6 @@ class ConnectFourGame
 	
 	def initialize(winChecker, player1, ai)
 		# Game Type is either Normal, or TOOT (OTTO)
-		puts "Player1: #{player1}"
-		puts "GameType: #{winChecker}"
 		@player1 = player1
 		@player2 = ai
 		@winChecker = winChecker
@@ -45,7 +43,6 @@ class ConnectFourGame
 	    if(@gameBoard.endGame == true)
 	    	@player1.endGame(potentialWinner)
 	    else
-	    	puts "AI Making move..."
 	    	@player2.makeMove(self)
 	    	potentialWinner = @winChecker.checkWinCondition(@gameBoard)
 	    	if(@gameBoard.endGame == true)
