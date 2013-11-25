@@ -1,6 +1,5 @@
 require 'test/unit/assertions.rb'
 require './connect_four_game_board'
-require './connect_four_ui'
 require './win_checker_normal'
 include Test::Unit::Assertions
 
@@ -8,23 +7,24 @@ class ConnectFourGame
  
 	attr_reader :rows, :columns, :gameBoard
 	
-	def initialize(gameType, row = 6, col = 7)
+	def initialize(winChecker, player1, ai)
 		# Game Type is either Normal, or TOOT (OTTO)
-		@rows = row
-		@columns = col
-		@gameType = gameType
-		@gameBoard = ConnectFourGameBoard.new(row, col, "Player 1", "Player 2")
-		@ui = ConnectFourUI.new(self)
+		puts "Player1: #{player1}"
+		puts "GameType: #{winChecker}"
+		@player1 = player1
+		@player2 = ai
+		@winChecker = winChecker
+		@gameBoard = ConnectFourGameBoard.new(6, 7, player1, ai)
 	end
 
 	def move(player, column)
 	    #Pre Conditions
-	    begin
-			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> invalid column." unless (column > 0 and column <= @columns)
+		begin
+			raise ArgumentError, "Game is over.  Please start a new one." unless @gameBoard.endGame == false
 		end
 
 		begin
-			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> Game is over.  Please start a new one." unless @gameBoard.endGame == false
+			raise ArgumentError, "Column is full.  Please choose another column." unless @gameBoard.grid[column - 1].size < @gameBoard.rowSize
 		end
 	    
 	    #End PreConditions
@@ -39,11 +39,27 @@ class ConnectFourGame
 	    	
 	    return returnVal
 	end
+
+	def endTurn(player)
+	    #Pre Conditions
+		begin
+			raise ArgumentError, "Game is over.  Please start a new one." unless @gameBoard.endGame == false
+		end
+	    #End PreConditions
+
+	    potentialWinner = @winChecker.checkWinCondition(@gameBoard)
+	    if(@gameBoard.endGame == true)
+	    	puts @player1
+	    	@player1.endGame(potentialWinner)
+	    end
+
+
+	end
 	
 	def checkWinCondition
 		# Pre Conditions
 		begin
-			raise RuntimeError, "ConnectFourGameBoard:: RuntimeError -> Game is over.  Please start a new one." unless @gameBoard.endGame == false
+			raise RuntimeError, "Game is over.  Please start a new one." unless @gameBoard.endGame == false
 		end
 		# End Pre Conditions
 
@@ -56,5 +72,3 @@ class ConnectFourGame
 		# End Post Conditions
 	end
 end
-
-game = ConnectFourGame.new("Normal")
