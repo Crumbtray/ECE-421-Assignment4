@@ -1,6 +1,7 @@
 require 'rubygems'
 require './connect_four_game'
 require './dumb_ai'
+require './smart_ai'
 require './win_checker_normal'
 require './win_checker_toot'
 require 'gtk2'
@@ -20,9 +21,15 @@ class ConnectFourUI
 
     table1 = @builder.get_object("table1")
 
+    dumbAIRadio = @builder.get_object("DumbAIRadio")
+
     newNormalGameButton = @builder.get_object("NewNormalGame")
     newNormalGameButton.signal_connect("activate") {
-      @gameInstance = ConnectFourGame.new(WinCheckerNormal, self, DumbAI.new)
+      if(dumbAIRadio.active?)
+        @gameInstance = ConnectFourGame.new(WinCheckerNormal, self, DumbAI.new)
+      else
+        @gameInstance = ConnectFourGame.new(WinCheckerNormal, self, SmartAI.new)
+      end
       @builder.objects.each {|object|
         if(object.is_a? Gtk::Image)
           object.set_file("empty.png")
@@ -32,7 +39,11 @@ class ConnectFourUI
 
     newTootGameButton = @builder.get_object("NewTootGame")
     newTootGameButton.signal_connect("activate") {
-      @gameInstance = ConnectFourGame.new(WinCheckerToot, self, DumbAI.new)
+      if(dumbAIRadio.active?)
+        @gameInstance = ConnectFourGame.new(WinCheckerNormal, self, DumbAI.new)
+      else
+        @gameInstance = ConnectFourGame.new(WinCheckerNormal, self, SmartAI.new)
+      end
       @builder.objects.each {|object|
         if(object.is_a? Gtk::Image)
           object.set_file("empty.png")

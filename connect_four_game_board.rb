@@ -7,6 +7,7 @@ class ConnectFourGameBoard
 	attr_accessor :endGame, :currentPlayer
 
 	def initialize(rows, columns, player1, player2)
+		puts "AI: #{player2}"
 		@grid = Array.new
 		@rowSize = rows
 		@colSize = columns
