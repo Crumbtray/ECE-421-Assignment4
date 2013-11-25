@@ -5,7 +5,7 @@ include Test::Unit::Assertions
 
 class ConnectFourGame
  
-	attr_reader :rows, :columns, :gameBoard
+	attr_reader :rows, :columns, :gameBoard, :player1, :player2
 	
 	def initialize(winChecker, player1, ai)
 		# Game Type is either Normal, or TOOT (OTTO)
@@ -36,39 +36,21 @@ class ConnectFourGame
 	    #Post Conditions
 	    assert(@gameBoard.grid[column - 1].size >= beforeCount)
 	    #End Post Conditions
-	    	
-	    return returnVal
+		
+		player1.updateGrid(returnVal, player)
 	end
 
-	def endTurn(player)
-	    #Pre Conditions
-		begin
-			raise ArgumentError, "Game is over.  Please start a new one." unless @gameBoard.endGame == false
-		end
-	    #End PreConditions
-
-	    potentialWinner = @winChecker.checkWinCondition(@gameBoard)
+	def endTurn()
+		potentialWinner = @winChecker.checkWinCondition(@gameBoard)
 	    if(@gameBoard.endGame == true)
-	    	puts @player1
 	    	@player1.endGame(potentialWinner)
+	    else
+	    	puts "AI Making move..."
+	    	@player2.makeMove(self)
+	    	potentialWinner = @winChecker.checkWinCondition(@gameBoard)
+	    	if(@gameBoard.endGame == true)
+	    		@player1.endGame(potentialWinner)
+	    	end
 	    end
-
-
-	end
-	
-	def checkWinCondition
-		# Pre Conditions
-		begin
-			raise RuntimeError, "Game is over.  Please start a new one." unless @gameBoard.endGame == false
-		end
-		# End Pre Conditions
-
-
-		# Post Conditions
-		# Nothing really to put here.  We delegate our win condition checking to the external modules
-		# It returns a true or false and:
-		# 	- If true, end game.
-		# 	- If false, continue game.
-		# End Post Conditions
 	end
 end

@@ -53,31 +53,35 @@ class ConnectFourUI
   end
 
   def button_clicked(tileNumber)
-      player = @gameInstance.gameBoard.currentPlayer
       
       begin
-        result = @gameInstance.move(player, tileNumber)
-
-        if (player == @gameInstance.gameBoard.player1)
-          @builder.get_object("image" + result.to_s).set_file("ghost.png")
-        else
-          @builder.get_object("image" + result.to_s).set_file("bunny.png")
-        end
-        @gameInstance.endTurn(self)
+        @gameInstance.move(self, tileNumber)
+        @gameInstance.endTurn
       rescue Exception => e
         dialog = Gtk::Dialog.new("Attention!", @window1)
         dialog.signal_connect('response') {dialog.destroy}
       
         dialog.vbox.add(Gtk::Label.new(e.message))
-        #dialog.vbox.add(Gtk::Label.new(e.backtrace.inspect))
+        dialog.vbox.add(Gtk::Label.new(e.backtrace.inspect))
         dialog.show_all
       end
+  end
+
+
+  def updateGrid(imageId, player)
+    if (player == @gameInstance.gameBoard.player1)
+      @builder.get_object("image" + imageId.to_s).set_file("ghost.png")
+    else
+      @builder.get_object("image" + imageId.to_s).set_file("bunny.png")
+    end
   end
 
   def endGame(winner)
     puts winner
     if(winner == self)
       text = "YOU ARE A WINNER"
+    elsif (winner == "draw")
+      text = "TIE GAME"
     else
       text = "YOU ARE A LOSER"
     end

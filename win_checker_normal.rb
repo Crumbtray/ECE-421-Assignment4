@@ -6,7 +6,6 @@ module WinCheckerNormal
 		end
 		# End Pre Conditions
 		
-		
 		anyOpenSpace = false
 		for x in 0..gameBoard.colSize - 1
 			for y in 0..gameBoard.rowSize - 1

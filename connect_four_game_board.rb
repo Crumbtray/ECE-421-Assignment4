@@ -21,6 +21,9 @@ class ConnectFourGameBoard
 	end
 
 	def add(player, column)
+		puts "Player #{player} is pushing to column #{column}"
+		puts "Current Player is: #{currentPlayer}"
+
 		# Pre Conditions
 		begin
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> invalid column." unless (column > 0 and column <= colSize)
@@ -33,6 +36,7 @@ class ConnectFourGameBoard
 		begin
 			raise ArgumentError, "ConnectFourGameBoard:: ArgumentError -> Not this player's turn." unless @currentPlayer == player
 		end
+
 		# Pre Conditions End
 		zeroIndexColumn = column - 1
 		beforeCol = @grid[zeroIndexColumn].size

@@ -5,7 +5,9 @@ class DumbAI
 	end
 
 	#DumbAI will naively choose its next move randomly from the unfilled board columns
-	def makeMove(gameBoard)
+	def makeMove(gameInstance)
+		gameBoard = gameInstance.gameBoard
+
 		# Pre Conditions
 		begin
 			raise ArgumentError, "DumbAI:: ArgumentError -> Game is over.  Please start a new one." unless gameBoard.endGame == false
@@ -20,6 +22,10 @@ class DumbAI
 			end
 		end
 		#Randomly chose from filtered columns
-		gameBoard.add(self, possibleMoves.sample)
+		return gameInstance.move(self, possibleMoves.sample)
+	end
+
+	def updateGrid(location, player)
+
 	end
 end
