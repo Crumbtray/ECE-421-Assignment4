@@ -13,33 +13,33 @@ module WinCheckerToot
 				current = gameBoard.grid[x][y]
 				#check if there are any lines
 				if(current != nil)
-					if(gameBoard.grid[x+1][y] not nil &&
+					if(gameBoard.grid[x+1][y] != nil &&
 					    current != gameBoard.grid[x+1][y] &&
-						gameBoard.grid[x+2][y] not nil &&
+						gameBoard.grid[x+2][y] != nil &&
 						current != gameBoard.grid[x+2][y] &&
 						current == gameBoard.grid[x+3][y])
 						gameBoard.endGame = true;
 						return current;
 					end
-					if(gameBoard.grid[x][y+1] not nil &&
+					if(gameBoard.grid[x][y+1] != nil &&
 						current != gameBoard.grid[x][y+1] &&
-						gameBoard.grid[x][y+2] not nil &&
+						gameBoard.grid[x][y+2] != nil &&
 						current != gameBoard.grid[x][y+2] &&
 						current == gameBoard.grid[x][y+3])
 						gameBoard.endGame = true;
 						return current;
 					end
-					if(gameBoard.grid[x+1][y+1] not nil &&
+					if(gameBoard.grid[x+1][y+1] != nil &&
 						current != gameBoard.grid[x+1][y+1] &&
-						gameBoard.grid[x+1][y+1] not nil &&
+						gameBoard.grid[x+1][y+1] != nil &&
 						current != gameBoard.grid[x+2][y+2] &&
 						current == gameBoard.grid[x+3][y+3])
 						gameBoard.endGame = true;
 						return current;
 					end
-					if(gameBoard.grid[x-1][y-1] not nil &&
+					if(gameBoard.grid[x-1][y-1] != nil &&
 						current != gameBoard.grid[x+1][y+1] &&
-						gameBoard.grid[x-1][y-1] not nil &&
+						gameBoard.grid[x-1][y-1] != nil &&
 						current != gameBoard.grid[x-2][y-2] &&
 						current == gameBoard.grid[x-3][y-3])
 						gameBoard.endGame = true;
