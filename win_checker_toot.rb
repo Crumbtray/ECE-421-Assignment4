@@ -37,6 +37,14 @@ module WinCheckerToot
 						gameBoard.endGame = true;
 						return current;
 					end
+					if(gameBoard.grid[x-1][y-1] not nil &&
+						current != gameBoard.grid[x+1][y+1] &&
+						gameBoard.grid[x-1][y-1] not nil &&
+						current != gameBoard.grid[x-2][y-2] &&
+						current == gameBoard.grid[x-3][y-3])
+						gameBoard.endGame = true;
+						return current;
+					end
 				else
 					anyOpenSpace = true
 				end
