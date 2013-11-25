@@ -6,6 +6,7 @@ include Test::Unit::Assertions
 class ConnectFourGame
  
 	attr_reader :rows, :columns, :gameBoard, :player1, :player2
+	attr_accessor :winChecker
 	
 	def initialize(winChecker, player1, ai)
 		# Game Type is either Normal, or TOOT (OTTO)

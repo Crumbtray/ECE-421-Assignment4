@@ -4,7 +4,7 @@ include Test::Unit::Assertions
 class ConnectFourGameBoard
 
 	attr_reader :grid, :rowSize, :colSize, :currentPlayer, :player1, :player2
-	attr_accessor :endGame
+	attr_accessor :endGame, :currentPlayer
 
 	def initialize(rows, columns, player1, player2)
 		@grid = Array.new
